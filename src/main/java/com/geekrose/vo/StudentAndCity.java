@@ -14,6 +14,19 @@ public class StudentAndCity {
     private String cname;
     private Integer pid;
 
+    public StudentAndCity(Integer sid, String sname, String semail, Integer sage, Integer cid, String cname, Integer pid) {
+        this.sid = sid;
+        this.sname = sname;
+        this.semail = semail;
+        this.sage = sage;
+        this.cid = cid;
+        this.cname = cname;
+        this.pid = pid;
+    }
+
+    public StudentAndCity() {
+    }
+
     @Override
     public String toString() {
         return "StudentAndCity{" +
