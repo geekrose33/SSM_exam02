@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geekrose.dao.MultiTable">
+    <!--写select|delete|update|insert语句-->
+    <select id="selectBothName" resultType="map">
+        select
+        s.name as sname, c.cname as cname
+        from
+        city c
+        inner join
+        student s
+        on
+        c.cid = s.cid
+    </select>
+
+    <select id="selectAll" resultType="com.geekrose.vo.StudentAndCity">
+        select
+        s.name as sname,
+        s.id as sid,
+        s.email as semail,
+        s.age as sage,
+        c.cid as cid,
+        c.cname as cname,
+        c.pid as pid
+        from
+        city c
+        inner join
+        student s
+        on
+        c.cid = s.cid
+    </select>
+
+    <select id="selectAge" resultType="com.geekrose.vo.StudentAndCity">
+        select
+        s.name as sname,
+        s.id as sid,
+        s.email as semail,
+        s.age as sage,
+        c.cid as cid,
+        c.cname as cname,
+        c.pid as pid
+        from
+        city c
+        inner join
+        student s
+        on
+        c.cid = s.cid
+        where
+        s.age &lt; #{age}
+    </select>
+
+</mapper>

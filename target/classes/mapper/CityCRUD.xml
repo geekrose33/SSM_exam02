@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geekrose.dao.CityCRUD">
+    <!--写select|delete|update|insert语句-->
+    <select id="select" resultType="com.geekrose.domain.City_Exam">
+        select cid , cname , pid from city
+--         where标签作用：当有条件时出现where关键字 没有条件直接忽略 并且要和if标签结合使用
+        <where>
+            <if test="cid != null and cid != ''">
+                and cid = #{cid}
+            </if>
+            <if test="cname != null and cname != ''">
+                and cname like '%' #{cname} '%'
+            </if>
+            <if test="pid != null and pid !=''">
+                and pid = #{pid}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertCity">
+        insert city (cid,cname,pid) values (#{cid},#{cname},#{pid})
+    </insert>
+
+    <delete id="delete">
+        delete from city where cid = #{cid}
+    </delete>
+
+    <update id="update">
+        update city set cname = #{cname} , pid = #{pid} where cid = #{cid}
+    </update>
+
+
+</mapper>
